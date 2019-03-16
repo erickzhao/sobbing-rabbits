@@ -21,7 +21,15 @@ const Dashboard = () => {
     <Layout>
       <Header>Header</Header>
       <Layout>
-        <Sider>
+        <Sider
+          style={{
+            overflow: 'auto',
+            height: '100vh',
+            position: 'fixed',
+            top: 0,
+            left: 0
+          }}
+        >
           <Menu
             onClick={handleClick}
             style={{ height: '100%' }}
