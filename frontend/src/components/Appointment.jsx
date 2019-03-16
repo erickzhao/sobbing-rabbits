@@ -6,13 +6,10 @@ import {
   Card,
   Button,
   Form,
-  Input,
   Layout,
   Row,
   Typography,
   Select,
-  Divider,
-  Icon,
   Avatar
 } from 'antd';
 import '../App.css';
@@ -23,7 +20,7 @@ const { Content } = Layout;
 const { Option } = Select;
 const { Title } = Typography;
 
-const Appointment = props => {
+const Appointment = () => {
   const [apt, setApt] = useState({});
   const [submit, setSubmit] = useState(false);
 
