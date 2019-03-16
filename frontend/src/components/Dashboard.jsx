@@ -20,7 +20,7 @@ const Dashboard = () => {
   return (
     <Layout>
       <Header style={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
-        <Button onClick={() => {localStorage.setItem('isLoggedIn', false); window.location.reload();}}>Log Out</Button>
+        <Button onClick={() => {localStorage.removeItem('isLoggedIn'); window.location.reload();}}>Log Out</Button>
       </Header>
       <Layout>
         <Sider
