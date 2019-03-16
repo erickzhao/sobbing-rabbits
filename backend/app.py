@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from sqlalchemy import create_engine
 from flask_cors import CORS
 from utils import app, db, encode_auth_token, decode_auth_token
-from purchases import get_purchases, get_extra_car_data
+from purchases import get_purchases
 from messages import send_sms
 CORS(app)
 
@@ -16,11 +16,6 @@ def index():
 def get_purchased_cars():
      user_id = decode_auth_token(request.json['jwt'])
      return jsonify(get_purchases(user_id))
-
-@app.route('/extra_data/<make_and_model>')
-def get_extra_data(make_and_model):
-     print(make_and_model)
-     return jsonify(get_extra_car_data(make_and_model))
 
 @app.route('/messages', methods=['POST'])
 def send_sms_to_user():

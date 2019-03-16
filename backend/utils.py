@@ -25,10 +25,10 @@ db = SQLAlchemy(app)
 token_expiry =  int(os.environ.get("TOKEN_EXPIRY", "1800"))
 
 users = {
-     "johnsmith": ('323950', "John Smith"),
-     "arman": ('329825', "Arman Izadi"),
-     "bigspender": ('321483', "William Gates"),
-     "bdc": ('326914', "Sulerick Ioan Bradrade")
+     "johnsmith": ('323950', "Mitsubishi", "RVR", "John Smith"),
+     "arman": ('329825', "Honda", "CBF600", "Arman Izadi"),
+     "bigspender": ('321483', "Mitsubishi", "Outlander", "William Gates"),
+     "bdc": ('326914', "Mitsubishi", "Lancer", "Sulerick Ioan Bradrade")
 }
 
 
