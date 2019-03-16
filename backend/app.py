@@ -12,10 +12,10 @@ def index():
     return "Hello world!"
 
 
-@app.route('/purchased_cars/<jwt>')
+@app.route('/purchased_cars')
 def get_purchased_cars(jwt):
-    user_id = decode_auth_token(jwt)
-    return jsonify(get_purchases(user_id))
+     user_id = decode_auth_token(request.json['jwt'])
+     return jsonify(get_purchases(user_id))
 
 @app.route('/extra_data/<make_and_model>')
 def get_extra_data(make_and_model):
