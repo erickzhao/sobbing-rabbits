@@ -1,14 +1,22 @@
 import { Menu, Icon, Layout } from 'antd';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
+import Info from './Info';
+import Maintenance from './Maintenance';
+import History from './History';
+import Appointment from './Appointment';
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 const { Header, Sider, Content, Footer } = Layout;
 
 const Dashboard = () => {
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {});
+
   const handleClick = e => {
-    console.log('click', e);
+    setPage(e.key);
   };
 
   return (
@@ -18,7 +26,7 @@ const Dashboard = () => {
         <Sider>
           <Menu
             onClick={handleClick}
-            style={{ width: 256, minHeight: '100vh' }}
+            style={{ minHeight: '100vh' }}
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
             mode="inline"
@@ -37,7 +45,7 @@ const Dashboard = () => {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Content>Content</Content>
+        <Content>{{ 1: <Info />, 2: <Maintenance />, 3: <Appointment /> }[page]}</Content>
       </Layout>
       <Footer>Footer</Footer>
     </Layout>
