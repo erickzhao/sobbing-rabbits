@@ -41,6 +41,7 @@ def send_sms_to_user():
 
 
 @app.route("/login", methods=["POST"])
+@cross_origin("*")
 def login():
     print(request.json)
     user = request.json["user"]
