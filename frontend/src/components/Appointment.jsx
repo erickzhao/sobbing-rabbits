@@ -1,19 +1,5 @@
 import React from 'react';
-import {
-  DatePicker,
-  TimePicker,
-  Col,
-  Card,
-  Button,
-  Form,
-  Input,
-  Layout,
-  Row,
-  Typography,
-  Select,
-  Divider,
-  Icon
-} from 'antd';
+import { DatePicker, TimePicker, Col, Card, Button, Form, Layout, Row, Select } from 'antd';
 import '../App.css';
 import locale from 'antd/lib/date-picker/locale/en_US';
 
@@ -25,21 +11,10 @@ const appointment = props => {
     console.log(`selected ${value}`);
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-      }
-    });
-  };
-
-  
   return (
-    
     <Layout style={{ paddingTop: 100, minHeight: '100vh' }}>
       <Content>
-        <Form onSubmit={handleSubmit} className="appointment-form">
+        <Form>
           <Row type="flex" justify="center">
             <Col>
               <Card style={{ display: 'flex', width: 350, justifyContent: 'center' }}>
@@ -52,7 +27,11 @@ const appointment = props => {
                   }}
                 >
                   <Form.Item>
-                    <Select defaultValue="Select type" style={{ width: 220 }} onChange={handleChange}>
+                    <Select
+                      defaultValue="Select type"
+                      style={{ width: 220 }}
+                      onChange={handleChange}
+                    >
                       <Option value="Type 1">Type 1</Option>
                       <Option value="Type 2">Type 2</Option>
                       <Option value="Type 3">Type 3</Option>
