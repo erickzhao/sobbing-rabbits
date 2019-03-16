@@ -1,11 +1,26 @@
-import React from 'react';
-import { Layout } from 'antd';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 
-const { Header, Footer } = Layout;
+const App = () => {
+  const [isLoggedIn, setLoginStatus] = useState(false);
+  const [loading, setLoadingStatus] = useState(true);
 
-const App = () => <Dashboard />;
+  useEffect(() => {
+    const storaged = localStorage.getItem('isLoggedIn');
+    setLoginStatus(storaged);
+    setLoadingStatus(false);
+  }, []);
+
+  if (isLoggedIn && !loading) {
+    return <Dashboard />;
+  }
+  if (!isLoggedIn && !loading) {
+    return <Login />;
+  }
+
+  return <div />;
+};
 
 export default App;
