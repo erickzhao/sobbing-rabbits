@@ -60,7 +60,7 @@ const Hub = () => {
   return (
     <Layout style={{ paddingTop: 100, minHeight: '100vh' }}>
       <Content style={{ display: 'flex', justifyContent: 'center' }}>
-        <Card className="hub--card" style={{maxWidth:900}}>
+        <Card className="hub--card" style={{ maxWidth: 900 }}>
           <div
             style={{
               display: 'flex',
@@ -83,7 +83,7 @@ const Hub = () => {
             <Row gutter={16}>
               <Divider>General Description</Divider>
               <Col span={24} style={{ margin: '10px 0 20px' }}>
-                {Parser(`<span>${general_desc}</span>`)}{' '}
+                {Parser(`<span>${general_desc}</span>`)}
               </Col>
               <Divider>Warranty Information</Divider>
               <Col span={12} style={{ margin: '10px 0 20px' }}>
@@ -126,10 +126,12 @@ const Hub = () => {
                 <Statistic title="Purchase Date" value="March 10, 2019" />
               </Col>
               <Col span={12}>
-                <Statistic title="Account Balance (CNY)" value={112893} precision={2} />
-                <Button style={{ marginTop: 16 }} type="primary">
-                  Recharge
-                </Button>
+                <Statistic title="Purchased From" value="Volvo Laval" />
+                <a href="https://www.volvolaval.com">
+                  <Button style={{ marginTop: 16 }} type="primary">
+                    Go to Site
+                  </Button>
+                </a>
               </Col>
             </Row>
           </Card>
