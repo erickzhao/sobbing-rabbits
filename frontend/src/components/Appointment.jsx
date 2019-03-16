@@ -1,20 +1,76 @@
-import React from 'react';
-import { DatePicker, TimePicker, Col, Card, Button, Form, Layout, Row, Select } from 'antd';
+import React, { useState } from 'react';
+import {
+  DatePicker,
+  TimePicker,
+  Col,
+  Card,
+  Button,
+  Form,
+  Input,
+  Layout,
+  Row,
+  Typography,
+  Select,
+  Divider,
+  Icon
+} from 'antd';
 import '../App.css';
 import locale from 'antd/lib/date-picker/locale/en_US';
+import { save, get } from '../util/apt';
 
 const { Content } = Layout;
-const Option = Select.Option;
+const { Option } = Select;
+const { Title } = Typography;
 
-const appointment = props => {
-  const handleChange = value => {
-    console.log(`selected ${value}`);
+const Appointment = props => {
+  const [apt, setApt] = useState({});
+  const [submit, setSubmit] = useState(false);
+
+  const handleType = value => {
+    setApt({
+      type: value,
+      date: apt.date,
+      time: apt.time
+    });
   };
+
+  const handleDate = value => {
+    setApt({
+      type: apt.type,
+      date: value,
+      time: apt.time
+    });
+  };
+
+  const handleTime = value => {
+    setApt({
+      type: apt.type,
+      date: apt.date,
+      time: value
+    });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    save(apt);
+    setSubmit(true);
+    console.log(get());
+  };
+
+  if (submit) {
+    return (
+      <Layout style={{ paddingTop: 100, minHeight: '100vh' }}>
+        <Content>
+          <Title>You have set up your appointment!</Title>
+        </Content>
+      </Layout>
+    );
+  }
 
   return (
     <Layout style={{ paddingTop: 100, minHeight: '100vh' }}>
       <Content>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Row type="flex" justify="center">
             <Col>
               <Card style={{ display: 'flex', width: 350, justifyContent: 'center' }}>
@@ -22,29 +78,30 @@ const appointment = props => {
                   style={{
                     flexDirection: 'column',
                     display: 'flex',
-                    height: 300,
                     justifyContent: 'space-around'
                   }}
                 >
                   <Form.Item>
-                    <Select
-                      defaultValue="Select type"
-                      style={{ width: 220 }}
-                      onChange={handleChange}
-                    >
-                      <Option value="Type 1">Type 1</Option>
-                      <Option value="Type 2">Type 2</Option>
-                      <Option value="Type 3">Type 3</Option>
-                      <Option value="Type 4">Type 4</Option>
+                    <Select defaultValue="Select type" style={{ width: 220 }} onChange={handleType}>
+                      <Option value="OIL">Oil</Option>
+                      <Option value="ENGINE">Engine</Option>
+                      <Option value="BRAKE_PADS">Brake Pads</Option>
+                      <Option value="RUSTPROOFING">Rustproofing</Option>
                     </Select>
                   </Form.Item>
 
                   <Form.Item>
-                    <DatePicker locale={locale} style={{ width: 220 }} />
+                    <DatePicker locale={locale} style={{ width: 220 }} onChange={handleDate} />
                   </Form.Item>
 
                   <Form.Item>
-                    <TimePicker style={{ width: 220 }} />
+                    <TimePicker
+                      use12Hours
+                      minuteStep={30}
+                      format="h:mm a"
+                      style={{ width: 220 }}
+                      onChange={handleTime}
+                    />
                   </Form.Item>
 
                   <Form.Item>
@@ -62,4 +119,4 @@ const appointment = props => {
   );
 };
 
-export default appointment;
+export default Appointment;
