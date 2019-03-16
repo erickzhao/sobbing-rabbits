@@ -1,42 +1,62 @@
 import React from 'react';
 import { Col, Divider, Icon, Skeleton, List, Avatar, Row, Progress, Typography } from 'antd';
 import '../App.css';
+import { save, get } from '../util/apt';
 
 const { Title, Paragraph, Text } = Typography;
 
 const list = [
   {
     title: 'Oil',
+    type: "OIL",
     percentage: 95,
-    threshold: 1
+    threshold: 1.5
   },
   {
     title: 'Engine',
+    type: "ENGINE",
     percentage: 44,
     threshold: 1.3
   },
   {
     title: 'Brake Pads',
+    type: "BRAKE_PADS",
     percentage: 52,
     threshold: 4
   },
   {
     title: 'Rustproofing',
+    type: "RUSTPROOFING",
     percentage: 74,
-    threshold: 3
+    threshold: 2.5
   }
 ];
 
 const ProgressBar = ({ title, maximum, pushNotifications }) => {
-  const purchaseAppointment = new Date(new Date().setFullYear(new Date().getFullYear() - 1));
+  const purchaseAppointment = new Date(new Date().setFullYear(new Date().getFullYear() - 2));
+  const appts = get();
+
+  const getGoodDate = ({value, type}) => {
+    const dueAppointment = appts.filter(el => el.type === type).sort((a,b) => new Date(b.date) - new Date(a.date));
+    return dueAppointment[0]? new Date(dueAppointment[0].date) : purchaseAppointment;
+  }
 
   const isDueAppointment = item => getPercentage(item) < 30;
 
-  const getPercentage = ({ value, threshold }) => {
-    const percentage =
-      (new Date().getTime() - purchaseAppointment.getTime()) / (threshold * 31557600000);
+  const getPercentage = ({ value, threshold, type }) => {
 
-    if (percentage < 100) {
+    const dueAppointment = appts.filter(el => el.type === type).sort((a,b) => new Date(b.date) - new Date(a.date));
+
+    console.log(dueAppointment);
+
+      const goodDate = dueAppointment[0]? new Date(dueAppointment[0].date) : purchaseAppointment;
+
+    const percentage =
+      (new Date().getTime() - goodDate.getTime()) / (threshold * 31557600000);
+
+      console.log(percentage);
+
+    if (percentage < 1) {
       return 100 - Math.round((percentage * 100) % 100);
     }
 
@@ -57,7 +77,10 @@ const ProgressBar = ({ title, maximum, pushNotifications }) => {
   };
 
   const getDescription = (item) => {
-    const lastAppStr = `Last ${item.title.toLowerCase()} change appointment: ${purchaseAppointment.getDate()}/${purchaseAppointment.getMonth()}/${purchaseAppointment.getFullYear()}.`;
+ 
+    const mydate = getGoodDate(item);
+
+    const lastAppStr = `Last ${item.title.toLowerCase()} change appointment: ${mydate.getDate()}/${mydate.getMonth()}/${mydate.getFullYear()}.`;
 
     return isDueAppointment(item) ? lastAppStr + ' You are due for an appointment!' : lastAppStr;
   }
