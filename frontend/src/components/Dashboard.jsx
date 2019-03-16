@@ -23,7 +23,15 @@ const Dashboard = () => {
         <Button onClick={() => {localStorage.setItem('isLoggedIn', false); window.location.reload();}}>Log Out</Button>
       </Header>
       <Layout>
-        <Sider>
+        <Sider
+          style={{
+            overflow: 'auto',
+            height: '100vh',
+            position: 'fixed',
+            top: 0,
+            left: 0
+          }}
+        >
           <Menu
             onClick={handleClick}
             style={{ height: '100%' }}
