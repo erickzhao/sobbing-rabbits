@@ -31,19 +31,25 @@ const Dashboard = () => {
           >
             <Menu.Item key="1">
               <Icon type="pie-chart" />
-              <span>Option 1</span>
+              <span>Info</span>
             </Menu.Item>
             <Menu.Item key="2">
-              <Icon type="desktop" />
-              <span>Option 2</span>
+              <Icon type="tool" />
+              <span>Maintenance</span>
             </Menu.Item>
             <Menu.Item key="3">
-              <Icon type="inbox" />
-              <span>Option 3</span>
+              <Icon type="schedule" />
+              <span>Appointment</span>
+            </Menu.Item>
+            <Menu.Item key="4">
+              <Icon type="clock-circle" />
+              <span>History</span>
             </Menu.Item>
           </Menu>
         </Sider>
-        <Content>{{ 1: <Info />, 2: <Maintenance />, 3: <Appointment /> }[page]}</Content>
+        <Content>
+          {{ 1: <Info />, 2: <Maintenance />, 3: <Appointment />, 4: <History /> }[page]}
+        </Content>
       </Layout>
       <Footer>Footer</Footer>
     </Layout>

@@ -23,15 +23,13 @@ function handleChange(value) {
   console.log(`selected ${value}`);
 }
 
-
-
 const appointment = props => {
   return (
     <Layout style={{ paddingTop: 100, minHeight: '100vh' }}>
       <Content>
         <Row type="flex" justify="center">
           <Col>
-            <Card style={{display:"flex", width:350, justifyContent: "center"}}>
+            <Card style={{ display: 'flex', width: 350, justifyContent: 'center' }}>
               <div
                 style={{
                   flexDirection: 'column',
