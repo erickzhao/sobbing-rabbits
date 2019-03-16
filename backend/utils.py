@@ -14,7 +14,7 @@ app.debug = True
 
 
 # Config
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql:///sobbingdata'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://events:Hack@th0n2019@hackathon-db.bdc.n360.io:3306/hackathon'
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY", "")
