@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, make_response
 from sqlalchemy import create_engine
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 from utils import app, db, encode_auth_token, decode_auth_token
 from purchases import get_purchases
 from messages import send_sms
@@ -8,28 +8,14 @@ from messages import send_sms
 CORS(app)
 
 port = 4293
-
-
-@app.route("/")
-@cross_origin()
+@app.route('/')
 def index():
     return "Hello world!"
 
-
-@app.after_request
-def add_headers(response):
-    response.headers.add("Access-Control-Allow-Origin", "*")
-    response.headers.add(
-        "Access-Control-Allow-Headers", "Content-Type,Authorization,x-requested-with"
-    )
-
-
-@app.route("/purchased_cars")
-@cross_origin()
-def get_purchased_cars():
-    user_id = decode_auth_token(request.json["jwt"])
-    return jsonify(get_purchases(user_id))
-
+@app.route('/purchased_cars/<jwt>')
+def get_purchased_cars(jwt):
+     user_id = decode_auth_token(jwt)
+     return jsonify(get_purchases(user_id))
 
 @app.route("/messages", methods=["POST"])
 def send_sms_to_user():
@@ -39,15 +25,9 @@ def send_sms_to_user():
         body += "[" + notif + "] "
     return jsonify(send_sms("number", body))
 
+@app.route('/login/<user>')
+def login(user):
+     return jsonify({"auth": str(encode_auth_token(user))})
 
-@app.route("/login", methods=["POST"])
-@cross_origin("*")
-def login():
-    print(request.json)
-    user = request.json["user"]
-    return make_response(encode_auth_token(user))
-
-
-if __name__ == "__main__":
-    app.run(port=port)
-
+if __name__ == '__main__':
+     app.run(port=port)

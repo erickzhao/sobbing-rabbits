@@ -4,6 +4,7 @@ import Info from './Info';
 import Maintenance from './Maintenance';
 import History from './History';
 import Appointment from './Appointment';
+import logo from './repaird.png';
 
 const MenuItemGroup = Menu.ItemGroup;
 const { Header, Sider, Content, Footer } = Layout;
@@ -19,8 +20,23 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <Header>
-        <Button onClick={() => {localStorage.setItem('isLoggedIn', false); window.location.reload();}}>Log Out</Button>
+      <Header
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          paddingLeft: 240
+        }}
+      >
+        <img style={{ height: 50 }} src={logo} />
+        <Button
+          onClick={() => {
+            localStorage.removeItem('isLoggedIn');
+            window.location.reload();
+          }}
+        >
+          Log Out
+        </Button>
       </Header>
       <Layout>
         <Sider
@@ -57,7 +73,7 @@ const Dashboard = () => {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Content>
+        <Content style={{ marginLeft: 200 }}>
           {{ 1: <Info />, 2: <Maintenance />, 3: <Appointment />, 4: <History /> }[page]}
         </Content>
       </Layout>
