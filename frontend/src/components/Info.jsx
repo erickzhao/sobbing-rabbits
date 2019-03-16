@@ -28,7 +28,7 @@ const data = {
   car_id: 4108071,
   car_year: 2011,
   date_sold: 'Fri, 04 May 2012 00:00:00 GMT',
-  drive_train: null,
+  drive_train: 'Front Wheel Drive',
   engine_type: '8',
   fuel: 'Unleaded',
   induction: null,
@@ -64,7 +64,7 @@ const Hub = () => {
           <div
             style={{
               display: 'flex',
-              justifyContent: 'space-between',
+              justifyContent: 'space-around',
               alignItems: 'center'
             }}
           >
