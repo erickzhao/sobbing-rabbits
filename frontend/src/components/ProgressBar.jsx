@@ -1,5 +1,5 @@
-import React from 'react';
-import { Col, Divider, Icon, Skeleton, List, Avatar, Row, Progress, Typography } from 'antd';
+import React, {useState, useEffect} from 'react';
+import { Col, Divider, Icon, Skeleton, Radio, List, Avatar, Row, Progress, Typography } from 'antd';
 import '../App.css';
 import { save, get } from '../util/apt';
 
@@ -33,6 +33,8 @@ const list = [
 ];
 
 const ProgressBar = ({ title, maximum, pushNotifications }) => {
+  let notifications = [];
+
   const purchaseAppointment = new Date(new Date().setFullYear(new Date().getFullYear() - 2));
   const appts = get();
 
@@ -82,7 +84,27 @@ const ProgressBar = ({ title, maximum, pushNotifications }) => {
 
     const lastAppStr = `Last ${item.title.toLowerCase()} change appointment: ${mydate.getDate()}/${mydate.getMonth()}/${mydate.getFullYear()}.`;
 
+    if (isDueAppointment(item)) {
+        notifications = [...notifications, `You are due for an ${item.title.toLowerCase()} appointment!`];
+        console.log(notifications);
+    }
+
     return isDueAppointment(item) ? lastAppStr + ' You are due for an appointment!' : lastAppStr;
+  }
+
+  const clickHandler = async (e) => {
+        const send = await fetch("http://sobbing-rabbits.herokuapp.com/messages", {
+            method: "post",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+          
+            //make sure to serialize your JSON body
+            body: JSON.stringify({ "notifications": notifications })
+          });
+
+          const hello = await send.json();
   }
 
   return (
@@ -100,6 +122,9 @@ const ProgressBar = ({ title, maximum, pushNotifications }) => {
           </List.Item>
         )}
       />
+      <div style={{marginTop: 20, textAlign: 'center'}}>
+         <Radio onClick={clickHandler}>Enable mobile notifications</Radio>
+        </div>
     </React.Fragment>
   );
 };
