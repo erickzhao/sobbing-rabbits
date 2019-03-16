@@ -15,6 +15,7 @@ def index():
 @app.route('/purchased_cars/<jwt>')
 @cross_origin()
 def get_purchased_cars(jwt):
+     jwt = jwt.replace('"', '')
      user_id = decode_auth_token(jwt)
      return jsonify(get_purchases(user_id))
 
