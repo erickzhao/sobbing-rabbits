@@ -13,10 +13,10 @@ const App = () => {
     setLoadingStatus(false);
   }, []);
 
-  if (isLoggedIn === "true" && !loading) {
+  if (isLoggedIn && !loading) {
     return <Dashboard />;
   }
-  if (isLoggedIn === "false" && !loading) {
+  if (!isLoggedIn && !loading) {
     return <Login />;
   }
 
