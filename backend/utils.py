@@ -22,7 +22,7 @@ app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY", "")
 db = SQLAlchemy(app)
 
 
-token_expiry =  int(os.environ.get("TOKEN_EXPIRY", "1800"))
+token_expiry =  int(os.environ.get("TOKEN_EXPIRY", "18000"))
 
 users = {
      "johnsmith": ('323950', "Mitsubishi", "RVR", "John Smith"),

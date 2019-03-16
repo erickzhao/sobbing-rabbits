@@ -24,9 +24,10 @@ def get_purchases(username):
     if not result:
         return {"status": "No result found!"}
 
-    get_extra_info = "select engine_desc, suspension_desc, brake_desc, fuel_town, fuel_highway, general_desc, air_tax, green_tax "\
+    get_extra_info = "select engine_desc, suspension_desc, brake_desc, fuel_town, fuel_highway, general_desc, air_tax, green_tax, car_lineup_ext_color.car_photo_url3 "\
                      "from car_lineup "\
                      "inner join car_lineup_trim on car_lineup_trim.car_id = car_lineup.car_id "\
+                     "inner join car_lineup_ext_color on car_lineup_ext_color.car_id = car_lineup.car_id "\
                      f"where car_lineup.make = '{make}' "\
                      f"and car_lineup.model = '{model}' "\
                      "and engine_desc is not null "\
@@ -60,6 +61,7 @@ def get_purchases(username):
                  "fuel_highway": result_extra[4],
                  "general_desc": result_extra[5],
                  "air_tax": result_extra[6],
-                 "green_tax": result_extra[7]
+                 "green_tax": result_extra[7],
+                 "car_photo": result_extra[8],
                 }
     return user_data
