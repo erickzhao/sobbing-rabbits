@@ -19,8 +19,11 @@ def get_purchased_cars():
 
 @app.route('/messages', methods=['POST'])
 def send_sms_to_user():
-    content = request.json
-    return jsonify(send_sms(content['number'], content['body']))
+    notifications = request.json['notifications']
+    body = ""
+    for notif in notifications:
+        body += "[" + notif + "] " 
+    return jsonify(send_sms('number', body))
 
 @app.route('/login', methods=['POST'])
 def login():

@@ -33,7 +33,10 @@ const appointment = props => {
       }
     });
   };
+
+  
   return (
+    
     <Layout style={{ paddingTop: 100, minHeight: '100vh' }}>
       <Content>
         <Form onSubmit={handleSubmit} className="appointment-form">
@@ -48,19 +51,28 @@ const appointment = props => {
                     justifyContent: 'space-around'
                   }}
                 >
-                  <Select defaultValue="Type 1" style={{ width: 220 }} onChange={handleChange}>
-                    <Option value="Type 2">Type 2</Option>
-                    <Option value="Type 3">Type 2</Option>
-                    <Option value="Type 4">Type 3</Option>
-                  </Select>
+                  <Form.Item>
+                    <Select defaultValue="Select type" style={{ width: 220 }} onChange={handleChange}>
+                      <Option value="Type 1">Type 1</Option>
+                      <Option value="Type 2">Type 2</Option>
+                      <Option value="Type 3">Type 3</Option>
+                      <Option value="Type 4">Type 4</Option>
+                    </Select>
+                  </Form.Item>
 
-                  <DatePicker locale={locale} style={{ width: 220 }} />
+                  <Form.Item>
+                    <DatePicker locale={locale} style={{ width: 220 }} />
+                  </Form.Item>
 
-                  <TimePicker style={{ width: 220 }} />
+                  <Form.Item>
+                    <TimePicker style={{ width: 220 }} />
+                  </Form.Item>
 
-                  <Button type="primary" htmlType="submit">
-                    Submit
-                  </Button>
+                  <Form.Item>
+                    <Button type="primary" htmlType="submit">
+                      Submit
+                    </Button>
+                  </Form.Item>
                 </div>
               </Card>
             </Col>
