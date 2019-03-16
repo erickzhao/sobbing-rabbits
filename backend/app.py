@@ -16,9 +16,9 @@ def index():
 #    response.headers.add('Access-Control-Allow-Origin', '*')
 #    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization,x-requested-with')
 
-@app.route('/purchased_cars')
-def get_purchased_cars():
-     user_id = decode_auth_token(request.json['jwt'])
+@app.route('/purchased_cars/<jwt>')
+def get_purchased_cars(jwt):
+     user_id = decode_auth_token(jwt)
      return jsonify(get_purchases(user_id))
 
 @app.route('/messages', methods=['POST'])
