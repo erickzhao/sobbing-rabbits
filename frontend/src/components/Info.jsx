@@ -46,18 +46,21 @@ const Hub = () => {
   const {
     inventory_make,
     inventory_model,
-    year,
+    car_year,
     inventory_trim,
     car_id,
     fuel,
     drive_train,
-    brake_desc
+    brake_desc,
+    engine_desc,
+    suspension_desc,
+    general_desc
   } = data;
 
   return (
     <Layout style={{ paddingTop: 100, minHeight: '100vh' }}>
       <Content style={{ display: 'flex', justifyContent: 'center' }}>
-        <Card className="hub--card">
+        <Card className="hub--card" style={{maxWidth:900}}>
           <div
             style={{
               display: 'flex',
@@ -68,7 +71,7 @@ const Hub = () => {
             <Avatar size={128} icon="car" style={{ margin: 20 }} />
             <div style={{ display: 'flex', flexDirection: 'column', padding: 20 }}>
               <Title style={{ margin: 0 }}>
-                {`${inventory_make} ${inventory_model}${` ${inventory_trim}`} ${year}`}
+                {`${inventory_make} ${inventory_model}${` ${inventory_trim}`} ${car_year}`}
               </Title>
               <Title style={{ margin: 0 }} level={4}>
                 VIN:
@@ -78,6 +81,10 @@ const Hub = () => {
           </div>
           <Card title="Car Details" style={{ marginBottom: 40 }}>
             <Row gutter={16}>
+              <Divider>General Description</Divider>
+              <Col span={24} style={{ margin: '10px 0 20px' }}>
+                {Parser(`<span>${general_desc}</span>`)}{' '}
+              </Col>
               <Divider>Warranty Information</Divider>
               <Col span={12} style={{ margin: '10px 0 20px' }}>
                 <Statistic title="Time" value="6" suffix="months" />
@@ -102,6 +109,14 @@ const Hub = () => {
               <Divider style={{ margin: '10 0' }}>Brakes</Divider>
               <Col span={24} style={{ margin: '10px 0 20px' }}>
                 {Parser(`<div>${brake_desc}</div>`)}
+              </Col>
+              <Divider style={{ margin: '10 0' }}>Engine</Divider>
+              <Col span={24} style={{ margin: '10px 0 20px' }}>
+                {Parser(`<div>${engine_desc}</div>`)}
+              </Col>
+              <Divider style={{ margin: '10 0' }}>Suspension</Divider>
+              <Col span={24} style={{ margin: '10px 0 20px' }}>
+                {Parser(`<div>${suspension_desc}</div>`)}
               </Col>
             </Row>
           </Card>
