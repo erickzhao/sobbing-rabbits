@@ -10,7 +10,7 @@ const Login = () => {
       <Content>
         <Row justify="center" type="flex">
           <Col>
-            <Card>
+            <Card className="login--card">
               <Avatar size={64} icon="user" />
               <Form style={{ marginTop: 32 }}>
                 <Form.Item>

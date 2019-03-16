@@ -1,12 +1,10 @@
 import { Menu, Icon, Layout } from 'antd';
 import React, { useState, useEffect } from 'react';
-import Slider from 'react-slick';
 import Info from './Info';
 import Maintenance from './Maintenance';
 import History from './History';
 import Appointment from './Appointment';
 
-const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -26,7 +24,7 @@ const Dashboard = () => {
         <Sider>
           <Menu
             onClick={handleClick}
-            style={{ minHeight: '100vh' }}
+            style={{ height: '100%' }}
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
             mode="inline"

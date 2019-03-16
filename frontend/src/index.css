@@ -17,3 +17,7 @@ code {
   justify-content: center;
   flex-direction: column;
 }
+
+.hub--card > .ant-card-body {
+  padding: 20px 100px;
+}
