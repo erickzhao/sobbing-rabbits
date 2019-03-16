@@ -27,7 +27,7 @@ def send_sms_to_user():
 
 @app.route('/login/<user>')
 def login(user):
-     return jsonify({"auth": encode_auth_token(user).decode('utf8')})
+     return str(jsonify({"auth": encode_auth_token(user).decode('utf8')}))
 
 if __name__ == '__main__':
      app.run(port=port)
