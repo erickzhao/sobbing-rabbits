@@ -5,18 +5,20 @@ import { Layout, Card, Avatar, Typography, Statistic, Row, Col, Button, Divider 
 import '../App.css';
 import Parser from 'html-react-parser';
 
-import data from '../config/user1';
+import data1 from '../config/user1';
+import data2 from '../config/user2';
 
 const { Title } = Typography;
 
 const { Content } = Layout;
+
+const data = localStorage.getItem('user') === 'johnsmith' ? data1 : data2;
 
 const Hub = () => {
   const {
     inventory_make,
     inventory_model,
     car_year,
-    inventory_trim,
     car_id,
     fuel,
     drive_train,

@@ -21,6 +21,7 @@ const Login = () => {
                   fetch(`https://sobbing-rabbits.herokuapp.com/login/${username}`)
                     .then(function(result) {
                       localStorage.setItem('isLoggedIn', true);
+                      localStorage.setItem('user', username);
                       localStorage.setItem('authtoken', result);
                       window.location.reload();
                     })
