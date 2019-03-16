@@ -5,18 +5,20 @@ import { Layout, Card, Avatar, Typography, Statistic, Row, Col, Button, Divider 
 import '../App.css';
 import Parser from 'html-react-parser';
 
-import data from '../config/user1';
+import data1 from '../config/user1';
+import data2 from '../config/user2';
 
 const { Title } = Typography;
 
 const { Content } = Layout;
+
+const data = localStorage.getItem('user') === 'johnsmith' ? data1 : data2;
 
 const Hub = () => {
   const {
     inventory_make,
     inventory_model,
     car_year,
-    inventory_trim,
     car_id,
     fuel,
     drive_train,
@@ -41,7 +43,7 @@ const Hub = () => {
             <Avatar size={128} icon="car" style={{ margin: 20 }} />
             <div style={{ display: 'flex', flexDirection: 'column', padding: 20 }}>
               <Title style={{ margin: 0 }}>
-                {`${inventory_make} ${inventory_model}${` ${inventory_trim}`} ${car_year}`}
+                {`${inventory_make} ${inventory_model} ${car_year}`}
               </Title>
               <Title style={{ margin: 0 }} level={4}>
                 VIN:
