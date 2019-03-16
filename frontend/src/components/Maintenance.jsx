@@ -1,8 +1,21 @@
 import React from 'react';
-import { Layout, Card, Avatar, Typography, Statistic, Row, Col, Button, Divider, T } from 'antd';
+import {
+  Layout,
+  Card,
+  Avatar,
+  Radio,
+  Typography,
+  Statistic,
+  Row,
+  Col,
+  Button,
+  Divider,
+  T
+} from 'antd';
 import '../App.css';
 import ProgressBar from './ProgressBar';
 import TireStatus from './TireStatus';
+import RecallList from './RecallList';
 
 const { Title } = Typography;
 
@@ -22,17 +35,7 @@ const Maintenance = props => {
             <TireStatus />
           </Card>
           <Card title="Pending recalls" style={{ marginBottom: 40 }}>
-            <Row gutter={16}>
-              <Col span={12}>
-                <Statistic title="Purchase Date" value="March 10, 2019" />
-              </Col>
-              <Col span={12}>
-                <Statistic title="Account Balance (CNY)" value={112893} precision={2} />
-                <Button style={{ marginTop: 16 }} type="primary">
-                  Recharge
-                </Button>
-              </Col>
-            </Row>
+            <RecallList />
           </Card>
         </Card>
       </Content>
