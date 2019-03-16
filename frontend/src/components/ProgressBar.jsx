@@ -10,7 +10,7 @@ const list = [
     title: 'Oil',
     type: "OIL",
     percentage: 95,
-    threshold: 1.5
+    threshold: 1
   },
   {
     title: 'Engine',

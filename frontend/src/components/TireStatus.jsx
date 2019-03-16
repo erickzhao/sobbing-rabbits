@@ -43,7 +43,7 @@ const seasons = {
 };
 
 const TireStatus = ({ title, maximum, pushNotifications }) => {
-  const currentDate = new Date();
+  const currentDate = new Date(new Date().setFullYear(new Date().getFullYear() - 1));
 
   const currentSeason = seasons[currentDate.getMonth()];
 
