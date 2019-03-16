@@ -11,11 +11,6 @@ port = 4293
 def index():
     return "Hello world!"
 
-#@app.after_request
-#def add_headers(response):
-#    response.headers.add('Access-Control-Allow-Origin', '*')
-#    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization,x-requested-with')
-
 @app.route('/purchased_cars/<jwt>')
 def get_purchased_cars(jwt):
      user_id = decode_auth_token(jwt)
@@ -32,8 +27,6 @@ def send_sms_to_user():
 @app.route('/login/<user>')
 def login(user):
      return encode_auth_token(user)
-
-
 
 if __name__ == '__main__':
      app.run(port=port)
