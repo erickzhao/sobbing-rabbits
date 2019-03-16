@@ -30,16 +30,16 @@ const Dashboard = () => {
             mode="inline"
           >
             <Menu.Item key="1">
-              <Icon type="pie-chart" />
-              <span>Option 1</span>
+              <Icon type="idcard" />
+              <span>Info</span>
             </Menu.Item>
             <Menu.Item key="2">
-              <Icon type="desktop" />
-              <span>Option 2</span>
+              <Icon type="tool" />
+              <span>Maintenance</span>
             </Menu.Item>
             <Menu.Item key="3">
-              <Icon type="inbox" />
-              <span>Option 3</span>
+              <Icon type="calendar" />
+              <span>Appointment</span>
             </Menu.Item>
           </Menu>
         </Sider>
