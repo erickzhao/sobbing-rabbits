@@ -36,7 +36,7 @@ const ProgressBar = ({ title, maximum, pushNotifications }) => {
   let notifications = [];
 
   const purchaseAppointment = new Date(new Date().setFullYear(new Date().getFullYear() - 2));
-  const appts = get();
+  const appts = get()? get() : [];
 
   const getGoodDate = ({value, type}) => {
     const dueAppointment = appts.filter(el => el.type === type).sort((a,b) => new Date(b.date) - new Date(a.date));
