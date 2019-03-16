@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect
 from flask_cors import CORS
 from utils import app, db
 from purchases import get_purchases
