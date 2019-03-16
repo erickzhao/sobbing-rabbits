@@ -1,4 +1,4 @@
-import { Menu, Icon, Layout } from 'antd';
+import { Menu, Icon, Layout, Button } from 'antd';
 import React, { useState, useEffect } from 'react';
 import Info from './Info';
 import Maintenance from './Maintenance';
@@ -19,7 +19,9 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <Header>Header</Header>
+      <Header>
+        <Button onClick={() => {localStorage.setItem('isLoggedIn', false); window.location.reload();}}>Log Out</Button>
+      </Header>
       <Layout>
         <Sider>
           <Menu
