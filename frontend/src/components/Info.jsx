@@ -41,7 +41,7 @@ const Hub = () => {
             <Avatar size={128} icon="car" style={{ margin: 20 }} />
             <div style={{ display: 'flex', flexDirection: 'column', padding: 20 }}>
               <Title style={{ margin: 0 }}>
-                {`${inventory_make} ${inventory_model}${` ${inventory_trim}`} ${car_year}`}
+                {`${inventory_make} ${inventory_model} ${car_year}`}
               </Title>
               <Title style={{ margin: 0 }} level={4}>
                 VIN:
