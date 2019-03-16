@@ -12,7 +12,8 @@ import {
   Typography,
   Select,
   Divider,
-  Icon
+  Icon,
+  Avatar
 } from 'antd';
 import '../App.css';
 import locale from 'antd/lib/date-picker/locale/en_US';
@@ -59,9 +60,19 @@ const Appointment = props => {
 
   if (submit) {
     return (
-      <Layout style={{ paddingTop: 100, minHeight: '100vh' }}>
-        <Content>
-          <Title>You have set up your appointment!</Title>
+      <Layout style={{ height: '90vh' }}>
+        <Content style={{ display: 'flex', justifyContent: 'center' }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'column'
+            }}
+          >
+            <Avatar icon="check-circle" size={64} />
+            <Title>You have set up your appointment!</Title>
+          </div>
         </Content>
       </Layout>
     );
