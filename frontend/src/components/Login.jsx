@@ -12,7 +12,14 @@ const Login = () => {
           <Col>
             <Card className="login--card">
               <Avatar size={64} icon="user" />
-              <Form style={{ marginTop: 32 }}>
+              <Form
+                style={{ marginTop: 32 }}
+                onSubmit={e => {
+                  e.preventDefault();
+                  localStorage.setItem('isLoggedIn', true);
+                  window.location.reload();
+                }}
+              >
                 <Form.Item>
                   <Input placeholder="Login" />
                 </Form.Item>
