@@ -19,11 +19,19 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <Header>
-        <Button onClick={() => {localStorage.setItem('isLoggedIn', false); window.location.reload();}}>Log Out</Button>
+      <Header style={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
+        <Button onClick={() => {localStorage.removeItem('isLoggedIn'); window.location.reload();}}>Log Out</Button>
       </Header>
       <Layout>
-        <Sider>
+        <Sider
+          style={{
+            overflow: 'auto',
+            height: '100vh',
+            position: 'fixed',
+            top: 0,
+            left: 0
+          }}
+        >
           <Menu
             onClick={handleClick}
             style={{ height: '100%' }}
@@ -49,7 +57,7 @@ const Dashboard = () => {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Content>
+        <Content style={{ marginLeft: 200 }}>
           {{ 1: <Info />, 2: <Maintenance />, 3: <Appointment />, 4: <History /> }[page]}
         </Content>
       </Layout>

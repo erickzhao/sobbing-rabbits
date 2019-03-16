@@ -5,7 +5,7 @@ import '../App.css';
 const { Content } = Layout;
 
 const Login = () => {
-  const [username, setUsername] = useState(0);
+  const [username, setUsername] = useState("");
   return (
     <Layout style={{ paddingTop: 100, minHeight: '100vh' }}>
       <Content>
@@ -18,18 +18,8 @@ const Login = () => {
                 onSubmit={e => {
                   // Query '{"user": this.state.username}'
                   e.preventDefault();
-                  console.log("??");
-                  fetch("https://cors-anywhere.herokuapp.com/https://sobbing-rabbits.herokuapp.com/login",
-                  {
-                    method: 'post',
-                    headers:{
-                      "X-Requested-With": "XMLHttpRequest"
-                    },
-                    body: {'user': username}
-                  })
+                  fetch("https://sobbing-rabbits.herokuapp.com/login/"+username)
                   .then(function(result){
-                    console.log("!!!");
-                    console.log(result);
                     localStorage.setItem('isLoggedIn', true);
                     localStorage.setItem('authtoken', result);
                     window.location.reload();
