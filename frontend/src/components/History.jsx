@@ -10,8 +10,8 @@ const History = props => {
           <Col>
             <Card>
               <Timeline style={{ maxWidth: 300 }}>
-                <Timeline.Item>Create a services site 2015-09-01</Timeline.Item>
-                <Timeline.Item>Solve initial network problems 2015-09-01</Timeline.Item>
+                <Timeline.Item>Vehicle purchased 2015-09-01</Timeline.Item>
+                <Timeline.Item>Service appointment 2015-11-01</Timeline.Item>
                 <Timeline.Item
                   dot={
                     <Icon
@@ -22,9 +22,9 @@ const History = props => {
                   }
                   color="red"
                 >
-                  Technical testing 2015-09-01
+                  Full checkup 2016-01-01
                 </Timeline.Item>
-                <Timeline.Item>Network problems being solved 2015-09-01</Timeline.Item>
+                <Timeline.Item>Tire change 2016-04-01</Timeline.Item>
               </Timeline>
             </Card>
           </Col>
