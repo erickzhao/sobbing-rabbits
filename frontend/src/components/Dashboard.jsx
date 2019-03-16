@@ -30,7 +30,7 @@ const Dashboard = () => {
             mode="inline"
           >
             <Menu.Item key="1">
-              <Icon type="idcard" />
+              <Icon type="pie-chart" />
               <span>Info</span>
             </Menu.Item>
             <Menu.Item key="2">
@@ -38,12 +38,18 @@ const Dashboard = () => {
               <span>Maintenance</span>
             </Menu.Item>
             <Menu.Item key="3">
-              <Icon type="calendar" />
+              <Icon type="schedule" />
               <span>Appointment</span>
+            </Menu.Item>
+            <Menu.Item key="4">
+              <Icon type="clock-circle" />
+              <span>History</span>
             </Menu.Item>
           </Menu>
         </Sider>
-        <Content>{{ 1: <Info />, 2: <Maintenance />, 3: <Appointment /> }[page]}</Content>
+        <Content>
+          {{ 1: <Info />, 2: <Maintenance />, 3: <Appointment />, 4: <History /> }[page]}
+        </Content>
       </Layout>
       <Footer>Footer</Footer>
     </Layout>
