@@ -18,6 +18,7 @@ const Hub = () => {
   const {
     inventory_make,
     inventory_model,
+    car_photo,
     car_year,
     car_id,
     fuel,
@@ -40,7 +41,7 @@ const Hub = () => {
               alignItems: 'center'
             }}
           >
-            <Avatar size={128} icon="car" style={{ margin: 20 }} />
+            <Avatar size={128} style={{ margin: 20 }} src={car_photo} />
             <div style={{ display: 'flex', flexDirection: 'column', padding: 20 }}>
               <Title style={{ margin: 0 }}>
                 {`${inventory_make} ${inventory_model} ${car_year}`}
